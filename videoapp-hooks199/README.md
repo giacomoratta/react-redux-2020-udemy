@@ -1,6 +1,8 @@
 # YouTube Search App (with Hooks)
 
 Topics:
-- class and functional components
-- css import
+- only functional components
 - hooks
+- css import
+- refactoring
+- custom hooks
