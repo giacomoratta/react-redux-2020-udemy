@@ -1,5 +1,3 @@
-import React from "react";
-
 // People dropping off a form = Action Creator
 const createPolicy = (name, amount) => {
   return { /* Action = the form */
@@ -32,4 +30,10 @@ const createClaim = (name, amountOfMoneyToCollect) => {
       amountOfMoneyToCollect
     }
   };
+};
+
+export {
+  createPolicy,
+  createClaim,
+  deletePolicy
 };
