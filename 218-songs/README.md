@@ -19,6 +19,6 @@ Each component has one Connect component which:
 
 Connect does all the magic for us, and make sure all the data from state and action creators go to Components as props.
 
-Provider wiring: see `./index.js` .
+Provider/Connect: see `./components/SongList.js` .
 
 
