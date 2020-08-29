@@ -1,5 +1,5 @@
 // People dropping off a form = Action Creator
-const createPolicy = (name, amount) => {
+export const createPolicy = (name, amount) => {
   return { /* Action = the form */
     type: 'CREATE_POLICY',
     payload: {
@@ -11,7 +11,7 @@ const createPolicy = (name, amount) => {
 
 
 // again, an Action Creator
-const deletePolicy = (name) => {
+export const deletePolicy = (name) => {
   return {
     type: 'DELETE_POLICY',
     payload: {
@@ -22,7 +22,7 @@ const deletePolicy = (name) => {
 
 
 // Action creator
-const createClaim = (name, amountOfMoneyToCollect) => {
+export const createClaim = (name, amountOfMoneyToCollect) => {
   return {
     type: 'CREATE_CLAIM',
     payload: {
@@ -30,10 +30,4 @@ const createClaim = (name, amountOfMoneyToCollect) => {
       amountOfMoneyToCollect
     }
   };
-};
-
-export {
-  createPolicy,
-  createClaim,
-  deletePolicy
 };
