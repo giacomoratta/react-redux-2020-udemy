@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import jsonPlaceholder from '../apis/jsonPlaceholder'
 
 /*
@@ -23,10 +24,38 @@ export const fetchPosts = () => {
     // , [optional] 'extraArgument'
   ) {
     const response = await jsonPlaceholder.get('/posts');
-    // console.log(response)
     dispatch({
       type: 'FETCH_POSTS',
       payload: response.data
     });
   };
 };
+
+/*
+    // Old version
+    export const fetchUser = (id) => {
+      return async function(dispatch, getState) {
+        const response = await jsonPlaceholder.get(`/users/${id}`);
+        dispatch({
+          type: 'FETCH_USER',
+          payload: response.data
+        });
+      };
+    };
+
+    // Mistake #1
+    export const fetchUser = _.memoize(...)
+
+    // Mistake #2
+    export const fetchUser = function(id) { return _.memoize(...) }
+*/
+
+// Short solution with memoize (Lecture 264)
+export const fetchUser = id => dispatch => _fetchUser(id, dispatch);
+const _fetchUser = _.memoize(async (id, dispatch) => {
+  const response = await jsonPlaceholder.get(`/users/${id}`);
+  dispatch({
+    type: 'FETCH_USER',
+    payload: response.data
+  });
+});

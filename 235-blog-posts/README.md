@@ -2,8 +2,11 @@
 
 - middleware
 - react-thunk usage
+- async actions for react-thunk
 - axios
 - jsonPlaceholderAPI
+- ownProps (component) for mapStateToProps
+- avoid API requests with memoization (see fetchUser in `./src/actions/index.js`)
 
 
 ###Data loading with Redux 
