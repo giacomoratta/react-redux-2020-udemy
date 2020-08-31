@@ -17,6 +17,7 @@ const SongDetail = ({ song }) => {
 }
 
 const mapStateToProps = (state) => {
+  // state.selectedSong defined in combineReducers
   return {
     song: state.selectedSong
   }

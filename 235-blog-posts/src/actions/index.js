@@ -20,12 +20,13 @@ export const fetchPosts = () => {
   return async function(
     dispatch, // the usual dispatch function
     getState  // return all data inside redux store
-    // optional 'extraArgument'
+    // , [optional] 'extraArgument'
   ) {
-    const response = jsonPlaceholder.get('/posts');
+    const response = await jsonPlaceholder.get('/posts');
+    // console.log(response)
     dispatch({
       type: 'FETCH_POSTS',
-      payload: response
+      payload: response.data
     });
   };
 };

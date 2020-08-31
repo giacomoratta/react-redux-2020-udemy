@@ -40,6 +40,7 @@ const policies = (listOfPolicies = [], action) => {
 }
 
 // all our reducers together
+// n.b. in mapStateToProps, 'state' arg will have the following 3 props
 const ourDepartments = combineReducers({
   accounting,
   claimHistory,

@@ -15,6 +15,9 @@
 
 ### Middleware and redux-thunk
 
+(see `./src/actions/index.js` and `./src/index.js`)
+
+- Schema: actionCreator -> action -> reducer -> dispatch -> state
 - middleware placed between dispatch and reducers
 - redux-thunk is the middleware (with a very simple code)
 - action creators cannot be async
@@ -23,4 +26,9 @@
 - redux-thunk is the library which allows returning and handling functions as actions, even async functions
 - redux-thunk does not care about plain object
 
-(see actions/index.js and index.js)
+### Rules of reducers
+
+1. Must return any value but `undefined`
+2. Produces 'state', or data to be used inside of your app by using only `action + previous state`
+3. Must not reach 'out of itself' to decide what value to return (reducers are pure, therefore only use state and action)
+4. Must not mutate its input 'state' argument (= if state obj mutates internally, redux cannot understand the change; the only way is to return a new state object!)

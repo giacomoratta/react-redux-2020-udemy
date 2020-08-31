@@ -45,6 +45,7 @@ const mapStateToProps = (state) => {
   // console.log('current state store', state);
   // return state; - useless
 
+  // state.song defined in combineReducers
   return {
     songs: state.songs
   };
