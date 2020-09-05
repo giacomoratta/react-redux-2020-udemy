@@ -1,3 +1,4 @@
+import streams from '../apis/streams';
 import { SIGN_IN, SIGN_OUT } from './types';
 
 // Action creators
@@ -17,5 +18,11 @@ export const signOut = (userId) => {
     payload: {
       userId
     }
+  }
+};
+
+export const createStream = (formValues) => {
+  return async (dispatch) => {
+    streams.post('/streams', formValues);
   }
 };

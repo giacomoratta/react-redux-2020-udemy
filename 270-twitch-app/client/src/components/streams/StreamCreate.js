@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStream } from '../../actions';
 
 // Field = component
 // reduxForm = function which make components, actions, redux store working together
@@ -35,8 +37,9 @@ class StreamCreate extends React.Component {
     );
   }
 
-  onSubmit(formValues) {
+  onSubmit = (formValues) => {
     // read and save values (e.g. API, db, etc.)
+    this.props.createStream(formValues); // see connect()
   }
 
 
@@ -72,7 +75,20 @@ const validate = (formValues) => {
   return errors;
 }
 
-export default reduxForm({
+
+
+// [Ep.319] Component StreamCreate was already wired-up with reduxForm like the connect function
+// Now we want to use also connect... how!?
+// Solution: we treat the current binding like a component!
+// [ code can be shorten but keep this way to notice how we solved ]
+
+const formWrapped = reduxForm({
   form: 'streamCreate', // name for this specific form
   validate              // form validation with error messages
 })(StreamCreate);
+export default connect(
+  null,
+  {
+    createStream
+  }
+)(formWrapped);
