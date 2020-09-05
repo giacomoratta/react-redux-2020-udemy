@@ -46,3 +46,37 @@
 - gapi global object in window (browser)
 - `gapi.load('client:api2')` to fetch the api code we want for the app (after this, gapi will have more methods) 
 - see `GoogleAuth.js` component
+
+
+### Refactoring GoogleAuth component with Redux
+
+- 2 actions for `SIGN_IN` and `SIGN_OUT`
+- authReducer will return state.isSignedIn (state.auth)
+- changed this.auth.isSignedIn to this.props.isSignedIn
+- action types as constants (to avoid mistakes)
+
+
+### Use of Redux Dev Tools
+- https://github.com/zalmoxisus/redux-devtools-extension
+- setup with middleware and enhancers
+- install chrome extension
+- icon will be green after adding the following code:
+```
+import { createStore, applyMiddleware, compose } from 'redux';
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(
+  reducers,
+  composeEnhancers(applyMiddleware(
+    /* no middleware is fine */
+  ))
+);
+```
+- debug_session option: `http://localhost:3000/?debug_session=<random-string-5s3df6g7h>`
+
+
+### Redux-form
+- **doc: https://reduct-form.com**
+- in react, an input element is handled by a component which has a state and setState function; input value is set from state and onChange attr. will trigger a state change with setState.
+- in redux, no components will have single input values: the redux-store will store them all.
+- component has props and handler for the status change (triggered by onChange); props will have some state data and the handler will dispatch the change.
+- redux-form involves component, mapStateToProps, actionCreators, and Redux-Form-Reducer and it will make them working together automatically. (imported in /reducers/index.js)
