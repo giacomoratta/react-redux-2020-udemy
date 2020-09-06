@@ -80,3 +80,13 @@ const store = createStore(
 - in redux, no components will have single input values: the redux-store will store them all.
 - component has props and handler for the status change (triggered by onChange); props will have some state data and the handler will dispatch the change.
 - redux-form involves component, mapStateToProps, actionCreators, and Redux-Form-Reducer and it will make them working together automatically. (imported in /reducers/index.js)
+
+
+### Types of Navigation
+- **Intentional Navigation**: user clicks on a link component, so it is trying to go from page A to page B.
+- **Programmatic Navigation**: we run code to forcibly navigate the user through our app; we create the path for the user.
+- **'history' object**
+    - created internally to BrowserRouter component
+    - programmatic navigation is not recorded in the history automatically
+    - it is very difficult to deal with history object
+    - good solution: create a BrowserHistory object; our 'PlainRouter' will listen to history for changes to the URL 
