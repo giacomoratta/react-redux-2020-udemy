@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components for react-router
-import { BrowserRouter, Route } from 'react-router-dom';
+import { /* BrowserRouter, */ Router, Route } from 'react-router-dom';
 
 // Custom components
 import StreamCreate from './streams/StreamCreate';
@@ -10,13 +10,14 @@ import StreamEdit from './streams/StreamEdit';
 import StreamList from './streams/StreamList';
 import StreamShow from './streams/StreamShow';
 import Header from './Header';
+import history from '../history';
 
 
 const App = () => {
   // without exact, PageOne is always showed because '/' is common to all other paths
   return (
     <div className="ui container">
-      <BrowserRouter>
+      <Router history={history}>
         <div>
           <Header/>
           <Route path="/" exact component={StreamList} />
@@ -25,7 +26,7 @@ const App = () => {
           <Route path="/streams/delete" exact component={StreamDelete} />
           <Route path="/streams/show" exact component={StreamShow} />
         </div>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

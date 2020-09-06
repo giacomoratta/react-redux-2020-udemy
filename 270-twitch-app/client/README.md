@@ -85,8 +85,14 @@ const store = createStore(
 ### Types of Navigation
 - **Intentional Navigation**: user clicks on a link component, so it is trying to go from page A to page B.
 - **Programmatic Navigation**: we run code to forcibly navigate the user through our app; we create the path for the user.
-- **'history' object**
-    - created internally to BrowserRouter component
-    - programmatic navigation is not recorded in the history automatically
-    - it is very difficult to deal with history object
-    - good solution: create a BrowserHistory object; our 'PlainRouter' will listen to history for changes to the URL 
+
+##### 'history' object
+- created internally to BrowserRouter component
+- programmatic navigation is not recorded in the history automatically
+- it is very difficult to deal with history object
+- good solution: create a BrowserHistory object; our 'PlainRouter' will listen to history for changes to the URL 
+```
+Warning: <BrowserRouter> ignores the history prop. To use a custom history, use `import { Router }` instead of `import { BrowserRouter as Router }`.
+```
+- to solve the warning, we need to use a Plain Router (imported as `Router`)
+- see `./actions/index.js` for history object usage
