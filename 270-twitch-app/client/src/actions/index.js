@@ -46,6 +46,20 @@ export const createStream = (formValues) => {
   }
 };
 
+export const editStream = (id, formValues) => {
+  return async (dispatch) => {
+    // PUT = updates all properties
+    // PATCH = updates only the properties explicitly changed
+    // const response = await streams.put(`/streams/${id}`, formValues);
+    const response = await streams.patch(`/streams/${id}`, formValues);
+    dispatch({
+      type: EDIT_STREAM,
+      payload: response.data
+    });
+    history.push('/');
+  }
+};
+
 export const fetchStreams = () => {
   return async (dispatch) => {
     const response = await streams.get('/streams');
@@ -61,16 +75,6 @@ export const fetchStream = (id) => {
     const response = await streams.get(`/streams/${id}`);
     dispatch({
       type: FETCH_STREAM,
-      payload: response.data
-    })
-  }
-};
-
-export const editStream = (id, formValues) => {
-  return async (dispatch) => {
-    const response = await streams.put(`/streams/${id}`, formValues);
-    dispatch({
-      type: EDIT_STREAM,
       payload: response.data
     })
   }

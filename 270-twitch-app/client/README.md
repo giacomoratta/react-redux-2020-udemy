@@ -1,38 +1,11 @@
-### App Challenges
+**App Challenges**
 - navigation to separate pages
 - login/logout with Google
 - handling forms with Redux
 - mastering CRUD operations with React/Redux
 - user-friendly error handling
 
-
-### React-Router
-
-- `react-router`: core navigation lib (don't install manually)
-- `react-router-dom`: navigation for dom-based apps
-- `react-router-native`: navigation for react-native apps
-- `react-router-redux`: bindings between redux and react-router (not necessary and not recommended by official react doc)
-
-(see usage in `./src/components/App.js`)
-
-
-### How react-router works
-
-- only cares about the part after base URL
-- `exact` shows the path only when it exactly matches
-- `<Route>` basically works when the path contains the stated path!
-
-
-### Navigation
-
-- bad navigation: use normal links like '/abc'; every time browser will make a new request, and it will refresh all app data (e.g. state)
-- `BrowserRouter` uses everything after TLD
-- `HashRouter` uses everything after # as the path
-- `MemoryRouter` does not use URL to track navigation
-- `<Link>` component helps with navigation
-
-
-### Authentication
+## Authentication
 
 - Use of `OAuth authentication`
 - user authorizes our app to access their information
@@ -40,7 +13,7 @@
 - OAuth allows our app making actions on behalf of user
 
 
-### Google APIs
+#### Google APIs
 
 - Google OAuth + set origin address with localhost:3000
 - gapi global object in window (browser)
@@ -48,7 +21,7 @@
 - see `GoogleAuth.js` component
 
 
-### Refactoring GoogleAuth component with Redux
+#### Refactoring GoogleAuth component with Redux
 
 - 2 actions for `SIGN_IN` and `SIGN_OUT`
 - authReducer will return state.isSignedIn (state.auth)
@@ -56,7 +29,7 @@
 - action types as constants (to avoid mistakes)
 
 
-### Use of Redux Dev Tools
+## Redux Dev Tools
 - https://github.com/zalmoxisus/redux-devtools-extension
 - setup with middleware and enhancers
 - install chrome extension
@@ -74,7 +47,7 @@ const store = createStore(
 - debug_session option: `http://localhost:3000/?debug_session=<random-string-5s3df6g7h>`
 
 
-### Redux-form
+## Redux-form
 - **doc: https://reduct-form.com**
 - in react, an input element is handled by a component which has a state and setState function; input value is set from state and onChange attr. will trigger a state change with setState.
 - in redux, no components will have single input values: the redux-store will store them all.
@@ -82,9 +55,42 @@ const store = createStore(
 - redux-form involves component, mapStateToProps, actionCreators, and Redux-Form-Reducer and it will make them working together automatically. (imported in /reducers/index.js)
 
 
+## Routes and Navigation
+
+##### Libraries
+- `react-router`: core navigation lib (don't install manually)
+- `react-router-dom`: navigation for dom-based apps
+- `react-router-native`: navigation for react-native apps
+- `react-router-redux`: bindings between redux and react-router (not necessary and not recommended by official react doc)
+(see usage in `./src/components/App.js`)
+
 ### Types of Navigation
 - **Intentional Navigation**: user clicks on a link component, so it is trying to go from page A to page B.
 - **Programmatic Navigation**: we run code to forcibly navigate the user through our app; we create the path for the user.
+
+### How react-router works
+
+- only cares about the part after base URL
+- `exact` shows the path only when it exactly matches
+- `<Route>` basically works when the path contains the stated path!
+
+##### Types of Router components
+
+- bad navigation: use normal links like '/abc'; every time browser will make a new request, and it will refresh all app data (e.g. state)
+- `BrowserRouter` uses everything after TLD
+- `HashRouter` uses everything after # as the path
+- `MemoryRouter` does not use URL to track navigation
+- `<Link>` component helps with navigation
+
+##### URL Selection
+- **Selection Reducer**: when a user clicks on a stream to edit it, use a 'selectionReducer' to record what stream is being edited
+- **URL-based selection**: put the ID of the stream being edited in the URL (recommended)
+
+##### 'location', 'match', 'history' props
+- components stated in `<Route>` element receive these special props
+- location has hash, pathname, search, etc.
+- match has params (declared with ':'), isExact, path, url, etc. 
+- history is explained below
 
 ##### 'history' object
 - created internally to BrowserRouter component
@@ -96,3 +102,9 @@ Warning: <BrowserRouter> ignores the history prop. To use a custom history, use 
 ```
 - to solve the warning, we need to use a Plain Router (imported as `Router`)
 - see `./actions/index.js` for history object usage
+
+
+## Remarks
+
+#### Component isolation
+- each component must fetch its own data (see `components/StreamEdit.js`) 
