@@ -76,7 +76,7 @@ export const fetchStream = (id) => {
     dispatch({
       type: FETCH_STREAM,
       payload: response.data
-    })
+    });
   }
 };
 
@@ -86,6 +86,7 @@ export const deleteStream =(id) => {
     dispatch({
       type: DELETE_STREAM,
       payload: id
-    })
+    });
+    history.push('/');
   }
 };

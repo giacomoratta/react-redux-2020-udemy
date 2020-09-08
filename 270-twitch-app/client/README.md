@@ -104,6 +104,16 @@ Warning: <BrowserRouter> ignores the history prop. To use a custom history, use 
 - see `./actions/index.js` for history object usage
 
 
+## React Portals
+- in React, everything is nested in `body > div with id 'root'`
+- show modals or extra elements from a component, will make them as children of the current component
+    - css on the component might be complex or unchangeable, so the modal might be not rendered correctly
+    - for example, z-index issues (see `public/modal.html`)
+- react portal helps to show new elements and make them as direct child of body element
+- see `components/Modal.js`
+- made modal component reusable
+
+
 ## Remarks
 
 #### Component isolation
