@@ -73,6 +73,7 @@ const store = createStore(
 - only cares about the part after base URL
 - `exact` shows the path only when it exactly matches
 - `<Route>` basically works when the path contains the stated path!
+- `<Switch>` needed to avoid to show more than 1 component matching the URL (e.g. `/streams/new` and `/streams/:id`)
 
 ##### Types of Router components
 

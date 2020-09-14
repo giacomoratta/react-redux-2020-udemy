@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Components for react-router
-import { /* BrowserRouter, */ Router, Route } from 'react-router-dom';
+import { /* BrowserRouter, */ Router, Route, Switch } from 'react-router-dom';
 
 // Custom components
 import StreamCreate from './streams/StreamCreate';
@@ -20,11 +20,13 @@ const App = () => {
       <Router history={history}>
         <div>
           <Header/>
-          <Route path="/" exact component={StreamList} />
-          <Route path="/streams/new" exact component={StreamCreate} />
-          <Route path="/streams/edit/:id" exact component={StreamEdit} />
-          <Route path="/streams/delete/:id" exact component={StreamDelete} />
-          <Route path="/streams/show" exact component={StreamShow} />
+          <Switch>
+            <Route path="/" exact component={StreamList} />
+            <Route path="/streams/new" exact component={StreamCreate} />
+            <Route path="/streams/edit/:id" exact component={StreamEdit} />
+            <Route path="/streams/delete/:id" exact component={StreamDelete} />
+            <Route path="/streams/:id" exact component={StreamShow} />
+          </Switch>
         </div>
       </Router>
     </div>
