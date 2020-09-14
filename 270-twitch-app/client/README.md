@@ -115,6 +115,15 @@ Warning: <BrowserRouter> ignores the history prop. To use a custom history, use 
 - made modal component reusable
 
 
+## Setup RTMP Server and OBS
+
+- Node package: https://github.com/illuspas/Node-Media-Server
+- OBS: https://obsproject.com/
+- Start the media server: `npm start`
+
+
+
+
 ## Remarks
 
 #### Component isolation
