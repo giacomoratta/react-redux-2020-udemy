@@ -120,8 +120,8 @@ Warning: <BrowserRouter> ignores the history prop. To use a custom history, use 
 - Node package: https://github.com/illuspas/Node-Media-Server
 - OBS: https://obsproject.com/
 - Start the media server: `npm start`
-
-
+- Set a stream inside OBS settings
+- Start streaming from OBS
 
 
 ## Remarks
