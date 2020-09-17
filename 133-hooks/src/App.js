@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import Accordion from "./components/Accordion";
-import Search from "./components/Search";
-import Dropdown from "./components/Dropdown";
-import Translate from "./components/Translate";
-import Route from "./components/Route";
-import Header from "./components/Header";
+import React, { useState } from 'react'
+import Accordion from './components/Accordion'
+import Search from './components/Search'
+import Dropdown from './components/Dropdown'
+import Translate from './components/Translate'
+import Route from './components/Route'
+import Header from './components/Header'
 
 const accordionItems = [
   {
@@ -19,14 +19,14 @@ const accordionItems = [
     title: 'How do you user React?',
     content: 'You use React by creating components'
   }
-];
+]
 
-const dropdownColorLabel = 'Select a color';
+const dropdownColorLabel = 'Select a color'
 const dropdownColorOptions = [
   { label: 'The color red', value: 'red' },
   { label: 'The color green', value: 'green' },
   { label: 'A shade of blue', value: 'blue' }
-];
+]
 
 // export default () => {
 //   return (
@@ -77,45 +77,43 @@ const dropdownColorOptions = [
 // }
 
 export default () => {
-  const [selected, setSelected] = useState(dropdownColorOptions[0]);
-  const [showDropdown, setShowDropdown] = useState(true);
+  const [selected, setSelected] = useState(dropdownColorOptions[0])
+  const [showDropdown, setShowDropdown] = useState(true)
 
   return (
     <div>
       <Header />
 
-      <Route path="/">
+      <Route path='/'>
         <div>
           <Accordion items={accordionItems} />
         </div>
       </Route>
 
-      <Route path="/list">
+      <Route path='/list'>
         <div>
-          <Search/>
+          <Search />
         </div>
       </Route>
 
-      <Route path="/dropdown">
+      <Route path='/dropdown'>
         <div>
           <button onClick={() => setShowDropdown(!showDropdown)}>Toggle Dropdown</button>
-          {showDropdown ?
-            <Dropdown
+          {showDropdown
+            ? <Dropdown
               selected={selected}
               onSelectedChange={setSelected}
               label={dropdownColorLabel}
               options={dropdownColorOptions}
-            /> : null
-          }
+            /> : null}
         </div>
       </Route>
 
-      <Route path="/translate">
+      <Route path='/translate'>
         <div>
           <Translate />
         </div>
       </Route>
     </div>
-  );
+  )
 }
-

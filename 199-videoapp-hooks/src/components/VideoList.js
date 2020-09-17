@@ -1,5 +1,5 @@
-import React from "react";
-import VideoItem from "./VideoItem";
+import React from 'react'
+import VideoItem from './VideoItem'
 
 const VideoList = ({ videos, onVideoSelect }) => {
   // fixed warning on missing key attr
@@ -8,12 +8,12 @@ const VideoList = ({ videos, onVideoSelect }) => {
       video={video}
       onVideoSelect={onVideoSelect}
       key={video.id.videoId}
-    />;
+    />
   })
 
   return (
-    <div className="ui relaxed divided list">{ rdList }</div>
-  );
+    <div className='ui relaxed divided list'>{rdList}</div>
+  )
 }
 
-export default VideoList;
+export default VideoList

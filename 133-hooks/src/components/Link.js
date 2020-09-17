@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 // solution for preventing the page to reload all resource
 // everytime we visit a new route!
@@ -6,19 +6,19 @@ import React from "react";
 const Link = ({ className, href, children }) => {
   const onClick = (e) => {
     // support ctrl+click
-    if (e.metaKey || e.ctrlKey) return;
+    if (e.metaKey || e.ctrlKey) return
 
     // stop default behavior
-    e.preventDefault();
+    e.preventDefault()
 
     // update the url in the address bar
-    window.history.pushState({}, '', href);
+    window.history.pushState({}, '', href)
 
     // emit NavigationEvent for Route components
-    const navEvent = new PopStateEvent('popstate');
-    window.dispatchEvent(navEvent);
-  };
+    const navEvent = new PopStateEvent('popstate')
+    window.dispatchEvent(navEvent)
+  }
   return <a className={className} href={href} onClick={onClick}>{children}</a>
-};
+}
 
-export default Link;
+export default Link

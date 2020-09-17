@@ -8,25 +8,25 @@
 // use debouncedTerm
 // use 2 separate useEffect(s)
 
-import React, { useState, useEffect /* hook */ } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect /* hook */ } from 'react'
+import axios from 'axios'
 
 const Search = () => {
-  const [term, setTerm] = useState('programming');
-  const [debouncedTerm, setDebouncedTerm] = useState(term);
-  const [results, setResults] = useState([]);
+  const [term, setTerm] = useState('programming')
+  const [debouncedTerm, setDebouncedTerm] = useState(term)
+  const [results, setResults] = useState([])
 
   // this section actually implements the debouncing action
   // to make sure we do not do our searches immediately
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setDebouncedTerm(term);
-    }, 700);
+      setDebouncedTerm(term)
+    }, 700)
 
     return () => {
-      clearTimeout(timerId);
-    };
-  }, [term]);
+      clearTimeout(timerId)
+    }
+  }, [term])
 
   // basically equal to the previous one
   useEffect(() => {
@@ -39,49 +39,49 @@ const Search = () => {
           format: 'json',
           srsearch: debouncedTerm
         }
-      });
-      setResults(data.query.search);
-    };
-    search();
-
-  }, [debouncedTerm] /* !!! */);
+      })
+      setResults(data.query.search)
+    }
+    search()
+  }, [debouncedTerm] /* !!! */)
 
   const renderedResults = results.map((result) => {
     return (
-      <div key={result.pageid} className="item">
-        <div className="right floated content">
+      <div key={result.pageid} className='item'>
+        <div className='right floated content'>
           <a
-            className="ui button"
+            className='ui button'
             href={`https://en.wikipedia.org?curid=${result.pageid}`}
-          >Go</a>
+          >Go
+          </a>
         </div>
-        <div className="content">
-          <div className="header">
+        <div className='content'>
+          <div className='header'>
             {result.title}
           </div>
-          <span dangerouslySetInnerHTML={{ __html:result.snippet }}></span>
+          <span dangerouslySetInnerHTML={{ __html: result.snippet }} />
         </div>
       </div>
-    );
-  });
+    )
+  })
 
   return (
     <div>
-      <div className="ui form">
-        <div className="field">
+      <div className='ui form'>
+        <div className='field'>
           <label>Enter Search Term</label>
           <input
-            className="input"
+            className='input'
             value={term}
             onChange={(e) => setTerm(e.target.value)}
           />
         </div>
       </div>
-      <div className="ui celled list">
+      <div className='ui celled list'>
         {renderedResults}
       </div>
     </div>
-  );
+  )
 }
 
-export default Search;
+export default Search

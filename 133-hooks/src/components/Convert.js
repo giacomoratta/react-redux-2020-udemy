@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
 const Convert = ({ language, text }) => {
-  const [translated, setTranslated] = useState('');
-  const [debouncedText, setDebouncedText] = useState(text);
+  const [translated, setTranslated] = useState('')
+  const [debouncedText, setDebouncedText] = useState(text)
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      setDebouncedText(text);
-    }, 500);
+      setDebouncedText(text)
+    }, 500)
 
     return () => {
-      clearTimeout(timerId);
-    };
-  }, [text]);
+      clearTimeout(timerId)
+    }
+  }, [text])
 
   useEffect(() => {
     // not possible to have async fn as useEffect cb, so create doTranslation()
@@ -26,20 +26,20 @@ const Convert = ({ language, text }) => {
             q: debouncedText, // text,
             target: language.value,
             key: 'AIzaSyCHUCmpR7cT_yDFHC98CZJy2LTms-IwDlM' /* not working :( */
-          });
-        setTranslated(data.data.translations[0].translatedText);
+          })
+        setTranslated(data.data.translations[0].translatedText)
       } catch (e) {
-        setTranslated('');
+        setTranslated('')
       }
-    };
-    doTranslation();
-  }, [language, debouncedText]);
+    }
+    doTranslation()
+  }, [language, debouncedText])
 
   return (
     <div>
-      <h1 className="ui header">{translated}</h1>
+      <h1 className='ui header'>{translated}</h1>
     </div>
-  );
+  )
 }
 
-export default Convert;
+export default Convert
