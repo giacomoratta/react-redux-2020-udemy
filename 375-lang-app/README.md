@@ -12,3 +12,11 @@
 #### No Redux anymore?
 - no, context system is just about communication
 - it does not keep status
+
+
+## App overview
+
+- basic user interface with words
+- select language
+- use context for communicating the language
+- only final ui components will change (no intermediate one!)

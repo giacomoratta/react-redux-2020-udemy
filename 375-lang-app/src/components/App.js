@@ -1,50 +1,26 @@
-import React from "react";
-import SearchBar from "./SearchBar";
-import VideoList from "./VideoList";
-import VideoDetail from "./VideoDetail";
-import { search as youtubeSearch } from "../apis/youtube";
+import React from 'react';
+import UserCreate from './UserCreate';
 
 class App extends React.Component {
   state = {
-    videos: [],
-    selectedVideo: null
+    language:'english'
   };
 
-  // default search term
-  componentDidMount() {
-    this.onTermSubmit('buildings');
+  onLanguageChange = (language) => {
+    this.setState({
+      language
+    });
   }
 
-  onTermSubmit = async term => {
-    const response = await youtubeSearch(term);
-    this.setState({
-      videos: response.data.items,
-      selectedVideo: response.data.items[0]
-    })
-  };
-
-  onVideoSelect = video => {
-    this.setState({ selectedVideo: video })
-  };
-
-  render () {
+  render() {
     return (
       <div className="ui container">
-        <SearchBar onFormSubmit={this.onTermSubmit} />
-        <div className="ui grid">
-          <div className="ui row">
-            <div className="eleven wide column">
-              <VideoDetail video={this.state.selectedVideo} />
-            </div>
-            <div className="five wide column">
-              <p>Videos found: {this.state.videos.length}</p>
-              <VideoList
-                videos={this.state.videos}
-                onVideoSelect={this.onVideoSelect}
-              />
-            </div>
-          </div>
+        <div>
+          Select a language:
+          <i className="flag us" onClick={() => { this.onLanguageChange('english') }}/>
+          <i className="flag nl" onClick={() => { this.onLanguageChange('dutch') }}/>
         </div>
+        <UserCreate />
       </div>
     );
   }
