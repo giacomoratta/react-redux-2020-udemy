@@ -10,7 +10,8 @@ class Field extends React.Component {
 
   render () {
     // console.log(this.context); // basic usage of context
-    const text = this.context === 'english' ? 'Name' : 'Naam';
+    // add .language after changes in LanguageSelector, which is not a string anymore, but a complex object
+    const text = this.context.language === 'english' ? 'Name' : 'Naam';
 
     return (
       <div className='ui field'>

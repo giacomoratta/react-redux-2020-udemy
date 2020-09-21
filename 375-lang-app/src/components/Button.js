@@ -7,10 +7,12 @@ class Button extends React.Component {
   // this component uses Consumer
 
   renderButton (color) {
+    // add .language after changes in LanguageSelector, which is not a string anymore, but a complex object
+
     return (
       <button className={`ui button ${color}`}>
         <LanguageContext.Consumer>
-          {(value) => value === 'english' ? 'Submit' : 'Voorleggen' }
+          {(value) => value.language === 'english' ? 'Submit' : 'Voorleggen' }
         </LanguageContext.Consumer>
       </button>
     );
